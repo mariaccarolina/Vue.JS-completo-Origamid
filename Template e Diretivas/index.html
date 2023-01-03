@@ -8,15 +8,22 @@
     <title>Templates e Diretivas</title>
 </head>
 <body>
+
     <div id="app">
         <h1>{{titulo}}</h1>
-        <p>{{conteudo}}</p>
+        <div v-if="comprou" :style="{background: cor}">
+         <p>{{conteudo}}</p>
         <p>{{lado * lado}}</p>
         <p>{{comprou ? "Sim ele comprou" : "Não comprou, compre aqui"}}</p>
+        <input v-model="cor" type="color" >
+        </div>
+         <a :href="comprou ? href : '' ">{{href}}</a>
+         {{cor}}
     </div>
    
     <script>
-
+        //v-if retira os elementos
+        //v-show dá um display none nos elementos, sem retira-lo do devTools
         //Podemos utilizar expressões de Javascript dentro dos {{}}
 
         new Vue({
@@ -26,6 +33,8 @@
                 conteudo: "Você vai longe menina!",
                 lado:5,
                 comprou: true,
+                href: "https://www.linkedin.com/in/maria-carolina-28b300213/",
+                cor:"#f084d9"
             }
         })
     </script>
